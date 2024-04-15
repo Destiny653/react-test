@@ -5,6 +5,11 @@ import users from './user'
 
 export default function Form() {
 
+    const nom = [1,2,3,4,6,7];
+    nom.find((n)=>{
+        return n === 1;
+    })
+
     const [password, setPassword] = useState()
     const [name, setName] = useState()
     const [email, setEmail] = useState()
@@ -15,13 +20,12 @@ export default function Form() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        users.find((use) =>{
-            const user = use.email === email && use.password === password && use.name === name;
-            console.log(user);
-            if(user){
-                nav('/home');
-            }else{alert("incorrect sign in")}
-        })
+         users.find((user)=>{
+             if(user.email === email && user.password === password && user.name === name){
+                 console.log(user.name);
+                 nav('/home')
+             }
+         })
 }
 
 
